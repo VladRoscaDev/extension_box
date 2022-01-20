@@ -1,3 +1,3 @@
-export 'context_extensions.dart';
-export 'date_extensions.dart';
-export 'string_extensions.dart';
+export 'extensions/context_extensions.dart';
+export 'extensions/date_extensions.dart';
+export 'extensions/string_extensions.dart';
