@@ -11,7 +11,7 @@ extension StringExtension on String {
     if (this!.isEmpty) {
       return false;
     }
-    return this!.length > s.length;
+    return this.length > s.length;
   }
 
   /// Checks if the [length!] of the String is more or equal to [s].
@@ -19,29 +19,23 @@ extension StringExtension on String {
     if (this == null) {
       return null;
     }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return false;
     }
-    return this!.length >= s.length;
+    return this.length >= s.length;
   }
 
   /// Checks if the [length!] of the String is less than [s].
   bool? operator <(String s) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return false;
     }
-    return this!.length < s.length;
+    return this.length < s.length;
   }
 
   /// Checks if the [length!] of the String is less or equal to [s].
   bool? operator <=(String s) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return false;
     }
     return this!.length <= s.length;
@@ -49,10 +43,7 @@ extension StringExtension on String {
 
   /// Subtracts-removes a text from a `String`.
   String? operator -(String s) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     return this!.replaceAll(s, '');
@@ -69,10 +60,7 @@ extension StringExtension on String {
   /// int readTime = foo.readTime(); // returns 3 seconds.
   /// ```
   int? readTime({int wordsPerMinute = 200}) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return 0;
     }
     var words = this!.trim().split(RegExp(r'(\s+)'));
@@ -87,10 +75,7 @@ extension StringExtension on String {
   /// String cFoo = foo.capitalize; // returns 'Hackerrr'.
   /// ```
   String? get capitalize {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     return '${this![0].toUpperCase()}${this!.substring(1).toLowerCase()}';
@@ -105,10 +90,7 @@ extension StringExtension on String {
   /// int count = foo.countWords; // returns 6 words.
   /// ```
   int? get countWords {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return 0;
     }
     var words = this!.trim().split(RegExp(r'(\s+)'));
@@ -129,10 +111,7 @@ extension StringExtension on String {
   /// String noNumbers = foo.removeNumbers; // returns 'e*s*e*n*t*i*s'
   /// ```
   String? get removeNumbers {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     var regex = RegExp(r'(\d+)');
@@ -166,15 +145,12 @@ extension StringExtension on String {
   /// String onlyGreek2 = foo2.onlyGreek; // returns 'σοφια αγάπη'
   /// ```
   String? get onlyGreek {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     // ignore: unnecessary_raw_strings
     var regex = RegExp(r'([^α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΌΆΈΎΫΉΏ\s]+)');
-    return this!.replaceAll(regex, '');
+    return this.replaceAll(regex, '');
   }
 
   /// Checks whether the `String` is `null`.
@@ -204,10 +180,7 @@ extension StringExtension on String {
   /// bool isIpv4 = foo.isIpv4; // returns false
   /// ```
   bool? get isIpv4 {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return false;
     }
     var regex = RegExp(
@@ -227,14 +200,11 @@ extension StringExtension on String {
   /// bool isIpv6 = foo.isIpv6; // returns false
   /// ```
   bool? get isIpv6 {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return false;
     }
 
-    this!.substring(0, 1);
+    this.substring(0, 1);
     var regex = RegExp(
         r'(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))');
     return regex.hasMatch(this!);
@@ -252,10 +222,7 @@ extension StringExtension on String {
   /// bool isUrl = foo.isUrl; // returns true
   /// ```
   bool? get isUrl {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return false;
     }
     var regex = RegExp(
@@ -307,10 +274,7 @@ extension StringExtension on String {
   /// bool isMail = foo.isMail; // returns true
   /// ```
   bool? get isMail {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return false;
     }
     var regex = RegExp(r"(^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$)");
@@ -351,10 +315,7 @@ extension StringExtension on String {
   /// bool isStrong = foo.isStrongPassword; // returns true
   /// ```
   bool? get isStrongPassword {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return false;
     }
     var regex = RegExp(
@@ -374,10 +335,7 @@ extension StringExtension on String {
   /// bool isGuid = foo.isGuid; // returns true
   /// ```
   bool? get isGuid {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return false;
     }
     var regex = RegExp(
@@ -393,10 +351,7 @@ extension StringExtension on String {
   /// bool isIn = foo.isIn(iterable); // returns false
   /// ```
   bool? isIn(Iterable<String?> strings) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return null;
     }
     return strings.contains(this);
@@ -411,10 +366,7 @@ extension StringExtension on String {
   /// bool isLatin2 = foo2.isLatin; // returns true
   /// ```
   bool? get isLatin {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return null;
     }
     return RegExp(r'^[a-zA-Z\s]+$').hasMatch(this!);
@@ -429,10 +381,7 @@ extension StringExtension on String {
   /// bool isLatin2 = foo2.isGreek; // returns true
   /// ```
   bool? get isGreek {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return null;
     }
     return RegExp(r'^[α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΌΆΈΎΫΉΏ\s]+$').hasMatch(this!);
@@ -445,10 +394,7 @@ extension StringExtension on String {
   /// String onyNumbers = foo.onlyNumbers; // returns '455455231'
   /// ```
   String? get onlyNumbers {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     // ignore: unnecessary_raw_strings
@@ -468,10 +414,7 @@ extension StringExtension on String {
   /// String noLetters = foo.removeLetters; // returns '1244**4*5523**1*'
   /// ```
   String? get removeLetters {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     // ignore: unnecessary_raw_strings
@@ -489,10 +432,7 @@ extension StringExtension on String {
   /// List occurences = foo.charOccurences; // returns '[{e:2},{i:1},{n:1},{s:2},]'
   /// ```
   List<Map<String, int>>? get charOccurences {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return [];
     }
     // ignore: omit_local_variable_types
@@ -524,10 +464,7 @@ extension StringExtension on String {
   /// int occ = foo.charCount('o'); // returns 2
   /// ```
   int? charCount(String char) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return 0;
     }
     return this!.split('').fold<int>(
@@ -541,10 +478,7 @@ extension StringExtension on String {
   /// String mostFrequent = foo.mostFrequent; // returns 'l'
   /// ```
   String? get mostFrequent {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     var occurences = [];
@@ -584,10 +518,7 @@ extension StringExtension on String {
   /// String reversed = foo.reverse; // returns 'dlrow olleH'
   /// ```
   String? get reverse {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     var letters = this!.split('').toList().reversed;
@@ -615,16 +546,13 @@ extension StringExtension on String {
   /// bool firstChars = foo.first(3); // returns 'hel'
   /// ```
   String? first({int n = 1}) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
-    if (this!.length < n) {
+    if (this.length < n) {
       return this;
     }
-    return this!.substring(0, n);
+    return this.substring(0, n);
   }
 
   /// Returns the last [n] characters of the string.
@@ -648,16 +576,13 @@ extension StringExtension on String {
   /// bool firstChars = foo.last(3); // returns 'rld'
   /// ```
   String? last({int n = 1}) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
-    if (this!.length < n) {
+    if (this.length < n) {
       return this;
     }
-    return this!.substring(this!.length - n, this!.length);
+    return this.substring(this!.length - n, this!.length);
   }
 
   /// Returns the string to slug case.
@@ -668,13 +593,10 @@ extension StringExtension on String {
   /// String fooSlug = foo.toSlug; // returns 'hello_world'
   /// ```
   String? get toSlug {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
-    var words = this!.trim().split(RegExp(r'(\s+)'));
+    var words = this.trim().split(RegExp(r'(\s+)'));
     var slugWord = '';
     if (this!.length == 1) {
       return this;
@@ -696,13 +618,10 @@ extension StringExtension on String {
   /// String camelCase = foo.toCamelCase; // returns 'findMaxOfArray'
   /// ```
   String? get toCamelCase {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
-    var words = this!.trim().split(RegExp(r'(\s+)'));
+    var words = this.trim().split(RegExp(r'(\s+)'));
     var result = words[0].toLowerCase();
     for (var i = 1; i < words.length; i++) {
       result += words[i].substring(0, 1).toUpperCase() +
@@ -718,13 +637,10 @@ extension StringExtension on String {
   /// Sting titleCased = foo.toTitleCase; // returns 'Hello Dear Friend How You Doing'.
   /// ```
   String? get toTitleCase {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
-    var words = this!.toLowerCase().split(' ');
+    var words = this.toLowerCase().split(' ');
     for (var i = 0; i < words.length; i++) {
       words[i] = words[i].substring(0, 1).toUpperCase() + words[i].substring(1);
     }
@@ -741,13 +657,10 @@ extension StringExtension on String {
   /// List<String> fooArray = foo.toArray; // returns '[a,b,r,a,c,a,d,a,b,r,a]'
   /// ```
   List<String>? get toArray {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return [];
     }
-    return this!.split('');
+    return this.split('');
   }
 
   /// Converts a `string` to a numeric value if possible.
@@ -764,10 +677,7 @@ extension StringExtension on String {
   /// var fooNull = foo.toNum(); // returns null;
   /// ```
   num? toNum() {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return null;
     }
     return num.tryParse(this!);
@@ -791,10 +701,7 @@ extension StringExtension on String {
   /// var fooNull = foo.toInt(); // returns 4;
   /// ```
   int? toInt() {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return null;
     }
     return int.tryParse(this!) ?? double.tryParse(this!)?.floor();
@@ -814,10 +721,7 @@ extension StringExtension on String {
   /// var fooNull = foo.toDouble(); // returns null;
   /// ```
   double? toDouble() {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return null;
     }
     return double.tryParse(this!);
@@ -831,10 +735,7 @@ extension StringExtension on String {
   /// String fooReplaced = foo.replaceGreek; // returns 'aristotelis'
   /// ```
   String? get replaceGreek {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     var normalizedWord = this!
@@ -918,10 +819,7 @@ extension StringExtension on String {
   /// String fooOccs = foo.findPatterns(pattern:'abr'); // returns '[0, 7]'
   /// ```
   List<int>? findPattern({required String pattern}) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return [];
     }
     // ignore: omit_local_variable_types
@@ -941,7 +839,7 @@ extension StringExtension on String {
       if (i + pattern.length > this!.length) {
         return occurences;
       }
-      if (this!.substring(i, i + pattern.length) == pattern) {
+      if (this.substring(i, i + pattern.length) == pattern) {
         occurences.add(i);
       }
     }
@@ -956,15 +854,12 @@ extension StringExtension on String {
   /// String stripped = foo.stripHtml; // returns 'Hacky hacky. Here is some text. This is bold.';
   /// ```
   String? get stripHtml {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     // ignore: unnecessary_raw_strings
     var regex = RegExp(r'<[^>]*>');
-    return this!.replaceAll(regex, '');
+    return this.replaceAll(regex, '');
   }
 
   /// If the provided string is empty do something.
@@ -975,10 +870,7 @@ extension StringExtension on String {
   /// foo.ifEmpty(()=>print('String is empty'));
   /// ```
   String? ifEmpty(Function act) {
-    if (this == null) {
-      return null;
-    }
-    return this!.isEmpty ? act() : this;
+    return this.isEmpty ? act() : this;
   }
 
   /// If the provided `String` is `null` do something.
@@ -1017,10 +909,7 @@ extension StringExtension on String {
   /// String fooRepeated = foo.repeat(5); // 'foofoofoofoofoo'
   /// ```
   String? repeat(int count) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty || count <= 0) {
+    if (this.isEmpty || count <= 0) {
       return this;
     }
     var repeated = this!;
@@ -1047,9 +936,9 @@ extension StringExtension on String {
     var sb = '';
     for (var i = 0; i < this!.length; i++) {
       if (i == 0 ||
-          this![i - 1] != this![i] ||
-          (this![i - 1] == this![i] && this![i] != char)) {
-        sb += this![i];
+          this[i - 1] != this![i] ||
+          (this[i - 1] == this![i] && this![i] != char)) {
+        sb += this[i];
       }
     }
     return sb;
@@ -1114,10 +1003,7 @@ extension StringExtension on String {
   /// int dist = foo.getLevenshtein('esentis2'); // 1
   /// ```
   int? getLevenshtein(String b) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return null;
     }
     var a = this!.toLowerCase();
@@ -1154,10 +1040,7 @@ extension StringExtension on String {
   ///var masked3 = string3.formatWithMask(mask3); // returns 'Hello esentis you are from greece'
   /// ```
   String? formatWithMask(String mask, {String specialChar = '#'}) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return null;
     }
     //var buffer = StringBuffer();
@@ -1185,10 +1068,7 @@ extension StringExtension on String {
   /// String newFoo = foo.removeFirst(3) // 'ntis';
   /// ```
   String? removeFirst(int n) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     if (n <= 0) {
@@ -1208,19 +1088,16 @@ extension StringExtension on String {
   /// String newFoo = foo.removeLast(3); // 'esen';
   /// ```
   String? removeLast(int n) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     if (n <= 0) {
       return this;
     }
-    if (n >= this!.length) {
+    if (n >= this.length) {
       return '';
     }
-    return this!.substring(0, this!.length - n);
+    return this.substring(0, this!.length - n);
   }
 
   /// Trims the `String` to have maximum [n] characters.
@@ -1231,19 +1108,16 @@ extension StringExtension on String {
   /// String newFoo = foo.maxChars(3); // 'esen';
   /// ```
   String? maxChars(int n) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     if (n <= 0) {
       return '';
     }
-    if (n >= this!.length) {
+    if (n >= this.length) {
       return this;
     }
-    return this!.substring(0, n);
+    return this.substring(0, n);
   }
 
   /// Reverses slash by providing [direction],
@@ -1261,10 +1135,7 @@ extension StringExtension on String {
   /// String revFoo2 = foo1.reverseSlash(1); // returns 'C:/Documents/user/test'
   /// ```
   String? reverseSlash(int direction) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     switch (direction) {
@@ -1289,10 +1160,7 @@ extension StringExtension on String {
   /// String? char4 = foo1.charAt(20); // returns null
   /// ```
   String? charAt(int index) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     if (index > this!.length) {
@@ -1301,7 +1169,7 @@ extension StringExtension on String {
     if (index < 0) {
       return null;
     }
-    return this!.split('')[index];
+    return this.split('')[index];
   }
 
   /// Appends a [suffix] to the `String`.
@@ -1313,10 +1181,7 @@ extension StringExtension on String {
   /// String newFoo = foo1.append(' world'); // returns 'hello world'
   /// ```
   String? append(String suffix) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     return this! + suffix;
@@ -1331,10 +1196,7 @@ extension StringExtension on String {
   /// String newFoo = foo1.prepend('hello '); // returns 'hello world'
   /// ```
   String? prepend(String prefix) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     return prefix + this!;
@@ -1351,10 +1213,7 @@ extension StringExtension on String {
   /// String formattedPrice = foo1.toPriceAmount(currencySymbol: '€'); // returns '12.345,67 €'
   /// ```
   String? toPriceAmount({String? currencySymbol}) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     try {
@@ -1386,10 +1245,7 @@ extension StringExtension on String {
   /// ```
   String? getDayFromDate({String locale = 'en'}) {
     initializeDateFormatting(locale);
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     var date = DateTime.tryParse(this!);
@@ -1416,10 +1272,7 @@ extension StringExtension on String {
   /// ```
   String? getMonthFromDate({String locale = 'en'}) {
     initializeDateFormatting(locale);
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     var date = DateTime.tryParse(this!);
@@ -1446,10 +1299,7 @@ extension StringExtension on String {
   /// ```
   String? firstDayOfMonth({String locale = 'en'}) {
     initializeDateFormatting(locale);
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     var date = DateTime.tryParse(this!);
@@ -1478,10 +1328,7 @@ extension StringExtension on String {
   /// ```
   String? lastDayOfMonth({String locale = 'en'}) {
     initializeDateFormatting(locale);
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     var date = DateTime.tryParse(this!);
@@ -1506,14 +1353,11 @@ extension StringExtension on String {
   ///  String foo = s.leftOf('butter'); // returns 'peanut'
   /// ```
   String? leftOf(String char) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     int index = this!.indexOf(char);
-    return this!.substring(0, index);
+    return this.substring(0, index);
   }
 
   /// Returns the right side of the `String` starting from [char].
@@ -1525,14 +1369,11 @@ extension StringExtension on String {
   ///  String foo = s.rightOf('peanut'); // returns 'butter'
   /// ```
   String? rightOf(String char) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     int index = this!.indexOf(char);
-    return this!.substring(index + char.length, this!.length);
+    return this!.substring(index + char.length, this.length);
   }
 
   /// Truncates a `String` with more than `length` characters.
@@ -1548,10 +1389,7 @@ extension StringExtension on String {
   /// String truncated = f.truncate(3); // Returns 'con...'
   /// ```
   String? truncate(int length) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     if (length <= 0) {
@@ -1560,7 +1398,7 @@ extension StringExtension on String {
     if (length > this!.length) {
       return this;
     }
-    return '${this!.substring(0, length)}...';
+    return '${this.substring(0, length)}...';
   }
 
   /// Truncates a long `String` in the middle while retaining the beginning and the end.
@@ -1576,10 +1414,7 @@ extension StringExtension on String {
   /// String truncated = f.truncateMiddle(5); // Returns 'con...ns'
   /// ```
   String? truncateMiddle(int maxChars) {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
     if (maxChars <= 0) {
@@ -1590,7 +1425,7 @@ extension StringExtension on String {
     }
     int leftChars = (maxChars / 2).ceil();
     int rightChars = maxChars - leftChars;
-    return '${this!.first(n: leftChars)}...${this!.last(n: rightChars)}';
+    return '${this.first(n: leftChars)}...${this!.last(n: rightChars)}';
   }
 
   /// Quotes the `String` adding "" at the start & at the end.
@@ -1623,12 +1458,9 @@ extension StringExtension on String {
   /// String trimmed = text.trimAll ; // returns 'esentis thinks'
   /// ```
   String? get trimAll {
-    if (this == null) {
-      return null;
-    }
-    if (this!.isEmpty) {
+    if (this.isEmpty) {
       return this;
     }
-    return this!.trim().replaceAll(RegExp(' +'), ' ');
+    return this.trim().replaceAll(RegExp(' +'), ' ');
   }
 }
