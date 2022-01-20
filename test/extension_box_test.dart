@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:extension_box/extension_box.dart';
+export 'package:extension_box/extensions/extension_box.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('extension_box');
